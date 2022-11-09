@@ -10,12 +10,12 @@ This is a shell script to build FFmpeg libraries for iOS and tvOS apps.
 
 Tested with:
 
-* FFmpeg 4.3.1
-* Xcode 12.2
+* FFmpeg 5.1.2
+* Xcode 14.1
 
 ## Requirements
 
-* https://github.com/libav/gas-preprocessor
+* [gas-preprocessor.pl](https://github.com/FFmpeg/gas-preprocessor)
 * yasm 1.2.0
 
 ## Usage

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # directories
-FF_VERSION="4.3.1"
+FF_VERSION="5.1.2"
 #FF_VERSION="snapshot-git"
 if [[ $FFMPEG_VERSION != "" ]]; then
   FF_VERSION=$FFMPEG_VERSION
@@ -19,7 +19,7 @@ THIN=`pwd`/"thin"
 #FDK_AAC=`pwd`/../fdk-aac-build-script-for-iOS/fdk-aac-ios
 
 CONFIGURE_FLAGS="--enable-cross-compile --disable-debug --disable-programs \
-                 --disable-doc --enable-pic"
+                 --disable-doc --enable-pic --disable-audiotoolbox"
 
 if [ "$X264" ]
 then
@@ -34,12 +34,12 @@ fi
 # avresample
 #CONFIGURE_FLAGS="$CONFIGURE_FLAGS --enable-avresample"
 
-ARCHS="arm64 armv7 x86_64 i386"
+ARCHS="arm64 x86_64"
 
 COMPILE="y"
 LIPO="y"
 
-DEPLOYMENT_TARGET="8.0"
+DEPLOYMENT_TARGET="13.0"
 
 if [ "$*" ]
 then
@@ -74,7 +74,7 @@ then
 	if [ ! `which gas-preprocessor.pl` ]
 	then
 		echo 'gas-preprocessor.pl not found. Trying to install...'
-		(curl -L https://github.com/libav/gas-preprocessor/raw/master/gas-preprocessor.pl \
+		(curl -L https://raw.githubusercontent.com/FFmpeg/gas-preprocessor/master/gas-preprocessor.pl \
 			-o /usr/local/bin/gas-preprocessor.pl \
 			&& chmod +x /usr/local/bin/gas-preprocessor.pl) \
 			|| exit 1
